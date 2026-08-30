@@ -14,7 +14,8 @@ def home():
         "richard": "richard.jpg",
         "matheus": "matheus.jpg",
         "miguel": "miguel.jpg",
-        "jose": "jose.jpg"
+        "jose": "jose.jpg",
+        "flavio": "flavio.jpg"
     }
 
     if request.method == "POST":
