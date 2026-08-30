@@ -1,9 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Cabrito Assado</title>
 
@@ -11,29 +17,48 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
     >
+
 </head>
 
 <body>
 
+
+    <audio id="musica" loop>
+
+        <source
+            src="{{ url_for('static', filename='musica/musica.mp3') }}"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
     <nav class="menu">
 
         <a href="/" class="botao-menu">
+
             <img
                 src="{{ url_for('static', filename='imagens/home.png') }}"
                 alt="Home"
             >
+
         </a>
 
+
         <a href="/galeria" class="botao-menu">
+
             <img
                 src="{{ url_for('static', filename='imagens/galeria.png') }}"
                 alt="Galeria"
             >
+
         </a>
 
     </nav>
 
+
     <main class="conteudo">
+
 
         <img
             src="{{ url_for('static', filename='imagens/logo.png') }}"
@@ -41,19 +66,23 @@
             class="logo"
         >
 
+
         <form method="POST">
 
             <label for="nome">
                 Digite seu nome:
             </label>
 
+
             <input
                 type="text"
                 id="nome"
                 name="nome"
                 placeholder="Seu nome"
+                autocomplete="off"
                 required
             >
+
 
             <button type="submit">
                 Entrar
@@ -61,12 +90,13 @@
 
         </form>
 
+
         {% if foto %}
 
             <div class="resultado">
 
                 <h2>
-                    Salve, {{ nome }}!
+                    Salve, {{ nome }}! 😂
                 </h2>
 
                 <img
@@ -79,7 +109,66 @@
 
         {% endif %}
 
+
+        {% if mensagem %}
+
+            <p class="mensagem-erro">
+                {{ mensagem }}
+            </p>
+
+        {% endif %}
+
+
     </main>
+
+
+    <button
+        id="botao-musica"
+        class="botao-musica"
+        type="button"
+    >
+        🔊 Música
+    </button>
+
+
+    <script>
+
+        const musica = document.getElementById("musica");
+        const botaoMusica = document.getElementById("botao-musica");
+
+        musica.volume = 0.25;
+
+        musica.play().catch(() => {
+
+            document.addEventListener(
+                "click",
+                () => {
+                    musica.play();
+                },
+                { once: true }
+            );
+
+        });
+
+
+        botaoMusica.addEventListener("click", () => {
+
+            if (musica.paused) {
+
+                musica.play();
+                botaoMusica.textContent = "🔊 Música";
+
+            } else {
+
+                musica.pause();
+                botaoMusica.textContent = "🔇 Música";
+
+            }
+
+        });
+
+    </script>
+
 
 </body>
 

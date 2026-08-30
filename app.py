@@ -8,29 +8,35 @@ def home():
 
     foto = None
     nome = None
+    mensagem = None
 
     fotos = {
         "gustavo": "gustavo.jpg",
         "richard": "richard.jpg",
         "matheus": "matheus.jpg",
         "miguel": "miguel.jpg",
-        "jose": "jose.jpg",
-        "flavio": "flavio.jpg"
+        "jose": "jose.png",
+        "flavio": "flavio.jpg",
+        "kayo": "kayo.jpg",
+        "kaique": "kaique.jpg"
     }
 
     if request.method == "POST":
 
         nome = request.form["nome"]
 
-        nome_minusculo = nome.lower()
+        nome_formatado = nome.strip().lower()
 
-        if nome_minusculo in fotos:
-            foto = fotos[nome_minusculo]
+        if nome_formatado in fotos:
+            foto = fotos[nome_formatado]
+        else:
+            mensagem = "Esse cabrito ainda não foi cadastrado 😂"
 
     return render_template(
         "index.html",
         foto=foto,
-        nome=nome
+        nome=nome,
+        mensagem=mensagem
     )
 
 
@@ -41,4 +47,4 @@ def galeria():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
