@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galeria</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <nav class="menu">
+
+        <a href="/" class="botao-menu">
+            <img
+                src="{{ url_for('static', filename='imagens/home.png') }}"
+                alt="Home"
+            >
+        </a>
+
+        <a href="/galeria" class="botao-menu">
+            <img
+                src="{{ url_for('static', filename='imagens/galeria.png') }}"
+                alt="Galeria"
+            >
+        </a>
+
+    </nav>
+
+    <main class="conteudo">
+
+        <h1>Galeria</h1>
+
+        <div class="galeria">
+
+            <img src="{{ url_for('static', filename='imagens/gustavo.jpg') }}" alt="Gustavo">
+            <img src="{{ url_for('static', filename='imagens/richard.jpg') }}" alt="Richard">
+            <img src="{{ url_for('static', filename='imagens/matheus.jpg') }}" alt="Matheus">
+            <img src="{{ url_for('static', filename='imagens/miguel.jpg') }}" alt="Miguel">
+            <img src="{{ url_for('static', filename='imagens/jose.jpg') }}" alt="Jose">
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

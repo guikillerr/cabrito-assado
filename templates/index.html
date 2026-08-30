@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cabrito Assado</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <nav class="menu">
+
+        <a href="/" class="botao-menu">
+            <img
+                src="{{ url_for('static', filename='imagens/home.png') }}"
+                alt="Home"
+            >
+        </a>
+
+        <a href="/galeria" class="botao-menu">
+            <img
+                src="{{ url_for('static', filename='imagens/galeria.png') }}"
+                alt="Galeria"
+            >
+        </a>
+
+    </nav>
+
+    <main class="conteudo">
+
+        <img
+            src="{{ url_for('static', filename='imagens/logo.png') }}"
+            alt="Cabrito Assado"
+            class="logo"
+        >
+
+        <form method="POST">
+
+            <label for="nome">
+                Digite seu nome:
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Seu nome"
+                required
+            >
+
+            <button type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        {% if foto %}
+
+            <div class="resultado">
+
+                <h2>
+                    Salve, {{ nome }}!
+                </h2>
+
+                <img
+                    src="{{ url_for('static', filename='imagens/' + foto) }}"
+                    alt="Foto de {{ nome }}"
+                    class="foto-pessoa"
+                >
+
+            </div>
+
+        {% endif %}
+
+    </main>
+
+</body>
+
+</html>
