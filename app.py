@@ -15,7 +15,7 @@ def home():
         "richard": "richard.jpg",
         "matheus": "matheus.jpg",
         "miguel": "miguel.jpg",
-        "jose": "jose.png",
+        "jose": "jose.jpg",
         "flavio": "flavio.jpg",
         "kayo": "kayo.jpg",
         "kaique": "kaique.jpg"
