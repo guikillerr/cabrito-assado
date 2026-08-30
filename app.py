@@ -15,7 +15,7 @@ def home():
         "richard": "richard.jpg",
         "matheus": "matheus.jpg",
         "miguel": "miguel.jpg",
-        "jose": "jose.jpg",
+        "jose": "jose.png",
         "flavio": "flavio.jpg",
         "kayo": "kayo.jpg",
         "kaique": "kaique.jpg"
@@ -28,8 +28,11 @@ def home():
         nome_formatado = nome.strip().lower()
 
         if nome_formatado in fotos:
+
             foto = fotos[nome_formatado]
+
         else:
+
             mensagem = "Esse cabrito ainda não foi cadastrado 😂"
 
     return render_template(

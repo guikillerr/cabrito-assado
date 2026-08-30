@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 
 <head>
@@ -23,6 +22,8 @@
 <body>
 
 
+    <!-- MÚSICA -->
+
     <audio id="musica" loop>
 
         <source
@@ -33,9 +34,14 @@
     </audio>
 
 
+    <!-- MENU -->
+
     <nav class="menu">
 
-        <a href="/" class="botao-menu">
+        <a
+            href="/"
+            class="botao-menu"
+        >
 
             <img
                 src="{{ url_for('static', filename='imagens/home.png') }}"
@@ -45,7 +51,10 @@
         </a>
 
 
-        <a href="/galeria" class="botao-menu">
+        <a
+            href="/galeria"
+            class="botao-menu"
+        >
 
             <img
                 src="{{ url_for('static', filename='imagens/galeria.png') }}"
@@ -57,8 +66,9 @@
     </nav>
 
 
-    <main class="conteudo">
+    <!-- CONTEÚDO PRINCIPAL -->
 
+    <main class="conteudo">
 
         <img
             src="{{ url_for('static', filename='imagens/logo.png') }}"
@@ -91,6 +101,8 @@
         </form>
 
 
+        <!-- FOTO ENCONTRADA -->
+
         {% if foto %}
 
             <div class="resultado">
@@ -110,10 +122,14 @@
         {% endif %}
 
 
+        <!-- NOME NÃO ENCONTRADO -->
+
         {% if mensagem %}
 
             <p class="mensagem-erro">
+
                 {{ mensagem }}
+
             </p>
 
         {% endif %}
@@ -122,50 +138,82 @@
     </main>
 
 
+    <!-- BOTÃO MÚSICA -->
+
     <button
         id="botao-musica"
         class="botao-musica"
         type="button"
     >
+
         🔊 Música
+
     </button>
 
 
+    <!-- JAVASCRIPT DA MÚSICA -->
+
     <script>
 
-        const musica = document.getElementById("musica");
-        const botaoMusica = document.getElementById("botao-musica");
+        const musica =
+            document.getElementById("musica");
+
+        const botaoMusica =
+            document.getElementById("botao-musica");
+
 
         musica.volume = 0.25;
+
+
+        /*
+        O navegador pode bloquear autoplay.
+        Nesse caso, a música começa após
+        o primeiro clique do usuário.
+        */
 
         musica.play().catch(() => {
 
             document.addEventListener(
+
                 "click",
+
                 () => {
+
                     musica.play();
+
                 },
+
                 { once: true }
+
             );
 
         });
 
 
-        botaoMusica.addEventListener("click", () => {
+        botaoMusica.addEventListener(
+            "click",
+            () => {
 
-            if (musica.paused) {
+                if (musica.paused) {
 
-                musica.play();
-                botaoMusica.textContent = "🔊 Música";
+                    musica.play();
 
-            } else {
+                    botaoMusica.textContent =
+                        "🔊 Música";
 
-                musica.pause();
-                botaoMusica.textContent = "🔇 Música";
+                }
+
+                else {
+
+                    musica.pause();
+
+                    botaoMusica.textContent =
+                        "🔇 Música";
+
+                }
 
             }
-
-        });
+        );
 
     </script>
 

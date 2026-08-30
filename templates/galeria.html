@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -15,35 +16,373 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
     >
+
 </head>
 
 <body>
 
+
+    <!-- MENU -->
+
     <nav class="menu">
 
-        <a href="/" class="botao-menu">
+        <a
+            href="/"
+            class="botao-menu"
+        >
+
             <img
                 src="{{ url_for('static', filename='imagens/home.png') }}"
                 alt="Home"
             >
+
         </a>
 
-        <a href="/galeria" class="botao-menu">
+
+        <a
+            href="/galeria"
+            class="botao-menu"
+        >
+
             <img
                 src="{{ url_for('static', filename='imagens/galeria.png') }}"
                 alt="Galeria"
             >
+
         </a>
 
     </nav>
 
+
+    <!-- GALERIA -->
+
     <main class="conteudo">
 
         <h1 class="titulo-galeria">
-            Galeria
+
+            Nossa Galeria
+
         </h1>
 
+
+        <div class="galeria-fotos">
+
+
+            <img
+                src="{{ url_for('static', filename='imagens/galeria/foto1.jpg') }}"
+                alt="Foto 1"
+                class="foto-galeria"
+            >
+
+
+            <img
+                src="{{ url_for('static', filename='imagens/galeria/foto2.jpg') }}"
+                alt="Foto 2"
+                class="foto-galeria"
+            >
+
+
+            <img
+                src="{{ url_for('static', filename='imagens/galeria/foto3.jpg') }}"
+                alt="Foto 3"
+                class="foto-galeria"
+            >
+
+
+            <img
+                src="{{ url_for('static', filename='imagens/galeria/foto4.jpg') }}"
+                alt="Foto 4"
+                class="foto-galeria"
+            >
+
+
+            <img
+                src="{{ url_for('static', filename='imagens/galeria/foto5.jpg') }}"
+                alt="Foto 5"
+                class="foto-galeria"
+            >
+
+
+            <img
+                src="{{ url_for('static', filename='imagens/galeria/foto6.jpg') }}"
+                alt="Foto 6"
+                class="foto-galeria"
+            >
+
+
+        </div>
+
     </main>
+
+
+    <!-- LIGHTBOX -->
+
+    <div
+        id="lightbox"
+        class="lightbox"
+    >
+
+
+        <!-- FECHAR -->
+
+        <button
+            id="fechar-lightbox"
+            class="fechar-lightbox"
+            type="button"
+        >
+
+            ×
+
+        </button>
+
+
+        <!-- FOTO ANTERIOR -->
+
+        <button
+            id="foto-anterior"
+            class="seta-lightbox seta-esquerda"
+            type="button"
+        >
+
+            ‹
+
+        </button>
+
+
+        <!-- FOTO GRANDE -->
+
+        <img
+            id="imagem-grande"
+            class="imagem-grande"
+            src=""
+            alt="Foto ampliada"
+        >
+
+
+        <!-- PRÓXIMA FOTO -->
+
+        <button
+            id="proxima-foto"
+            class="seta-lightbox seta-direita"
+            type="button"
+        >
+
+            ›
+
+        </button>
+
+
+    </div>
+
+
+    <!-- JAVASCRIPT DA GALERIA -->
+
+    <script>
+
+        const fotos =
+            document.querySelectorAll(".foto-galeria");
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const imagemGrande =
+            document.getElementById("imagem-grande");
+
+        const fechar =
+            document.getElementById("fechar-lightbox");
+
+        const anterior =
+            document.getElementById("foto-anterior");
+
+        const proxima =
+            document.getElementById("proxima-foto");
+
+
+        let fotoAtual = 0;
+
+
+        function mostrarFoto() {
+
+            imagemGrande.src =
+                fotos[fotoAtual].src;
+
+            imagemGrande.alt =
+                fotos[fotoAtual].alt;
+
+        }
+
+
+        function abrirFoto(indice) {
+
+            fotoAtual = indice;
+
+            mostrarFoto();
+
+            lightbox.classList.add("ativo");
+
+        }
+
+
+        function fecharFoto() {
+
+            lightbox.classList.remove("ativo");
+
+        }
+
+
+        function proximaFoto() {
+
+            fotoAtual++;
+
+            if (fotoAtual >= fotos.length) {
+
+                fotoAtual = 0;
+
+            }
+
+            mostrarFoto();
+
+        }
+
+
+        function fotoAnterior() {
+
+            fotoAtual--;
+
+            if (fotoAtual < 0) {
+
+                fotoAtual =
+                    fotos.length - 1;
+
+            }
+
+            mostrarFoto();
+
+        }
+
+
+        /*
+        Detecta qual foto da galeria
+        foi clicada.
+        */
+
+        fotos.forEach(
+            (foto, indice) => {
+
+                foto.addEventListener(
+                    "click",
+                    () => {
+
+                        abrirFoto(indice);
+
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+        X
+        */
+
+        fechar.addEventListener(
+            "click",
+            fecharFoto
+        );
+
+
+        /*
+        SETA DIREITA
+        */
+
+        proxima.addEventListener(
+            "click",
+            proximaFoto
+        );
+
+
+        /*
+        SETA ESQUERDA
+        */
+
+        anterior.addEventListener(
+            "click",
+            fotoAnterior
+        );
+
+
+        /*
+        CLICAR NO FUNDO
+        */
+
+        lightbox.addEventListener(
+            "click",
+            (evento) => {
+
+                if (
+                    evento.target === lightbox
+                ) {
+
+                    fecharFoto();
+
+                }
+
+            }
+        );
+
+
+        /*
+        TECLADO
+        */
+
+        document.addEventListener(
+            "keydown",
+            (evento) => {
+
+                if (
+                    !lightbox.classList.contains(
+                        "ativo"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    evento.key === "Escape"
+                ) {
+
+                    fecharFoto();
+
+                }
+
+
+                if (
+                    evento.key === "ArrowRight"
+                ) {
+
+                    proximaFoto();
+
+                }
+
+
+                if (
+                    evento.key === "ArrowLeft"
+                ) {
+
+                    fotoAnterior();
+
+                }
+
+            }
+        );
+
+
+    </script>
+
 
 </body>
 

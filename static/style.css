@@ -1,3 +1,7 @@
+/* =============================
+   CONFIGURAÇÕES GERAIS
+============================= */
+
 * {
     box-sizing: border-box;
 }
@@ -14,7 +18,10 @@ body {
 
     min-height: 100vh;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     color: white;
 
@@ -34,7 +41,9 @@ body {
 }
 
 
-/* MENU */
+/* =============================
+   MENU
+============================= */
 
 .menu {
 
@@ -53,7 +62,9 @@ body {
 }
 
 
-/* BOTÕES HOME E GALERIA */
+/* =============================
+   BOTÕES HOME E GALERIA
+============================= */
 
 .botao-menu {
 
@@ -95,7 +106,9 @@ body {
 }
 
 
-/* CONTEÚDO */
+/* =============================
+   CONTEÚDO
+============================= */
 
 .conteudo {
 
@@ -109,12 +122,17 @@ body {
 
     text-align: center;
 
-    padding: 30px 20px 80px;
+    padding:
+        30px
+        20px
+        80px;
 
 }
 
 
-/* LOGO */
+/* =============================
+   LOGO
+============================= */
 
 .logo {
 
@@ -129,7 +147,9 @@ body {
 }
 
 
-/* FORMULÁRIO */
+/* =============================
+   FORMULÁRIO
+============================= */
 
 form {
 
@@ -210,7 +230,9 @@ form button:hover {
 }
 
 
-/* RESULTADO */
+/* =============================
+   RESULTADO DA HOME
+============================= */
 
 .resultado {
 
@@ -219,7 +241,7 @@ form button:hover {
     padding: 20px;
 
     background:
-        rgba(0, 0, 0, 0.7);
+        rgba(0, 0, 0, 0.70);
 
     border-radius: 20px;
 
@@ -248,13 +270,17 @@ form button:hover {
 }
 
 
-/* ERRO */
+/* =============================
+   MENSAGEM DE ERRO
+============================= */
 
 .mensagem-erro {
 
     margin-top: 25px;
 
-    padding: 15px 20px;
+    padding:
+        15px
+        20px;
 
     background:
         rgba(0, 0, 0, 0.75);
@@ -268,21 +294,33 @@ form button:hover {
 }
 
 
-/* GALERIA */
+/* =============================
+   TÍTULO DA GALERIA
+============================= */
 
 .titulo-galeria {
 
     font-size: 40px;
 
-    margin-bottom: 25px;
+    margin:
+        10px
+        0
+        30px;
 
     text-shadow:
-        2px 2px 5px black;
+        2px
+        2px
+        6px
+        black;
 
 }
 
 
-.galeria {
+/* =============================
+   GALERIA
+============================= */
+
+.galeria-fotos {
 
     width: 100%;
 
@@ -296,60 +334,191 @@ form button:hover {
             minmax(220px, 1fr)
         );
 
-    gap: 25px;
+    gap: 18px;
 
 }
 
 
-/* CARD */
-
-.card {
-
-    background:
-        rgba(0, 0, 0, 0.75);
-
-    padding: 12px;
-
-    border-radius: 18px;
-
-    transition:
-        transform 0.25s ease;
-
-}
-
-
-.card:hover {
-
-    transform: scale(1.04);
-
-}
-
-
-.card img {
+.foto-galeria {
 
     width: 100%;
 
-    aspect-ratio: 1 / 1;
+    height: 260px;
 
     object-fit: cover;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+
+}
+
+
+.foto-galeria:hover {
+
+    transform: scale(1.04);
+
+    filter: brightness(1.10);
+
+}
+
+
+/* =============================
+   LIGHTBOX
+============================= */
+
+.lightbox {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0, 0, 0, 0.93);
+
+    z-index: 9999;
+
+}
+
+
+.lightbox.ativo {
+
+    display: flex;
+
+}
+
+
+/* =============================
+   FOTO GRANDE
+============================= */
+
+.imagem-grande {
+
+    max-width: 90%;
+
+    max-height: 90%;
+
+    object-fit: contain;
 
     border-radius: 12px;
 
 }
 
 
-.card h3 {
+/* =============================
+   X DO LIGHTBOX
+============================= */
 
-    margin:
+.fechar-lightbox {
 
-        12px 0 5px;
+    position: absolute;
 
-    font-size: 22px;
+    top: 20px;
+
+    right: 30px;
+
+    width: 50px;
+
+    height: 50px;
+
+    border: none;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    color: white;
+
+    font-size: 40px;
+
+    line-height: 40px;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    z-index: 10001;
 
 }
 
 
-/* BOTÃO DA MÚSICA */
+/* =============================
+   SETAS
+============================= */
+
+.seta-lightbox {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 60px;
+
+    height: 60px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 0, 0, 0.60);
+
+    color: white;
+
+    font-size: 45px;
+
+    cursor: pointer;
+
+    z-index: 10000;
+
+}
+
+
+.seta-esquerda {
+
+    left: 25px;
+
+}
+
+
+.seta-direita {
+
+    right: 25px;
+
+}
+
+
+.seta-lightbox:hover {
+
+    background:
+        rgba(255, 255, 255, 0.25);
+
+}
+
+
+/* =============================
+   BOTÃO DA MÚSICA
+============================= */
 
 .botao-musica {
 
@@ -360,8 +529,8 @@ form button:hover {
     bottom: 15px;
 
     padding:
-
-        12px 18px;
+        12px
+        18px;
 
     border: none;
 
@@ -376,7 +545,9 @@ form button:hover {
 }
 
 
-/* TABLET */
+/* =============================
+   TABLET
+============================= */
 
 @media (max-width: 900px) {
 
@@ -398,7 +569,9 @@ form button:hover {
 }
 
 
-/* CELULAR */
+/* =============================
+   CELULAR
+============================= */
 
 @media (max-width: 600px) {
 
@@ -430,8 +603,9 @@ form button:hover {
     .conteudo {
 
         padding:
-
-            20px 15px 80px;
+            20px
+            10px
+            80px;
 
     }
 
@@ -489,7 +663,9 @@ form button:hover {
     }
 
 
-    .galeria {
+    /* Duas fotos por linha */
+
+    .galeria-fotos {
 
         grid-template-columns:
             repeat(
@@ -497,21 +673,74 @@ form button:hover {
                 minmax(0, 1fr)
             );
 
-        gap: 12px;
+        gap: 8px;
 
     }
 
 
-    .card {
+    .foto-galeria {
 
-        padding: 8px;
+        height: 180px;
+
+        border-radius: 10px;
 
     }
 
 
-    .card h3 {
+    /* LIGHTBOX MOBILE */
 
-        font-size: 17px;
+    .lightbox {
+
+        padding: 10px;
+
+    }
+
+
+    .imagem-grande {
+
+        max-width: 100%;
+
+        max-height: 85%;
+
+    }
+
+
+    .fechar-lightbox {
+
+        top: 15px;
+
+        right: 15px;
+
+        width: 45px;
+
+        height: 45px;
+
+        font-size: 35px;
+
+    }
+
+
+    .seta-lightbox {
+
+        width: 45px;
+
+        height: 45px;
+
+        font-size: 35px;
+
+    }
+
+
+    .seta-esquerda {
+
+        left: 5px;
+
+    }
+
+
+    .seta-direita {
+
+        right: 5px;
 
     }
 
@@ -529,7 +758,9 @@ form button:hover {
 }
 
 
-/* CELULAR PEQUENO */
+/* =============================
+   CELULAR MUITO PEQUENO
+============================= */
 
 @media (max-width: 380px) {
 
@@ -556,22 +787,18 @@ form button:hover {
     }
 
 
-    .galeria {
+    .galeria-fotos {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
     }
 
-}
 
-.galeria-vazia {
-    margin-top: 30px;
+    .foto-galeria {
 
-    padding: 20px 30px;
+        height: 250px;
 
-    background: rgba(0, 0, 0, 0.7);
+    }
 
-    border-radius: 15px;
-
-    font-size: 20px;
 }
